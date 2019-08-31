@@ -1,0 +1,18 @@
+<h1>Hacker News</h1>
+
+<form action="/new_post" method="POST">
+  <input type="text" name="name" placeholder="Post name">
+  <input type="text" name="url" placeholder="Post url">
+  <input type="submit" value="Create new post">
+</form>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <a href="<%= post.url %>" target="_blank">
+        <%= "#{post.name} (#{post.votes} votes)" %>
+      </a>
+      <a href="/upvote_post?id=<%= post.id %>">Upvote</a>
+    </li>
+  <% end %>
+</ul>
